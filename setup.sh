@@ -2,6 +2,7 @@
 
 # 参考サイト
 # http://vdeep.net/github-dotfiles
+# http://kitakitabauer.hatenablog.com/entry/2016/09/13/173456
 
 set -u
 
@@ -19,6 +20,17 @@ for f in .??*; do
 
     # echo ${THIS_DIR}/"$f"
     ln -snfv ${THIS_DIR}/"$f" ~/
+done
+
+# symlink zsh configuration files into ~/.zsh
+if [ ! -d ~/.zsh ] ; then
+  mkdir ~/.zsh
+fi
+for file in .zsh/.*
+do
+  if [ $file != "." -a $file != ".." -a $file != ".git" ] ; then
+    ln -sf $THIS_DIR/$file ~/.zsh/
+  fi
 done
 
 cat << END

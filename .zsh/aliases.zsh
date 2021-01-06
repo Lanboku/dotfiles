@@ -33,4 +33,5 @@ alias ls='lsd'
 alias tree='lsd --tree'
 alias gcd='cd $(ghq root)/$(ghq list | peco)'
 alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
-
+alias dps='docker ps --format "{{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Command}}\t{{.RunningFor}}"'
+alias de='docker exec -it `dps | peco | cut -f 1` /bin/bash'
